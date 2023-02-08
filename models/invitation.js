@@ -15,16 +15,88 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Invitation.init({
-    routeName: DataTypes.STRING,
-    cpw: DataTypes.STRING,
-    cpp: DataTypes.STRING,
-    weddingDay: DataTypes.DATE,
-    greeting: DataTypes.TEXT,
-    akadStart: DataTypes.TIME,
-    akadEnd: DataTypes.TIME,
-    resepsiStart: DataTypes.TIME,
-    resepsiEnd: DataTypes.TIME,
-    location: DataTypes.STRING,
+    routeName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: {msg: 'Invitation name must be unique'},
+      validate: {
+        notEmpty: {msg: 'Invitation name is requierd'},
+        notNull: {msg: 'Invitation name is requierd'}
+      }
+    },
+    cpw: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: 'CPW is requierd'},
+        notNull: {msg: 'CPW is requierd'}
+      }
+    },
+    cpp: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: 'CPP is requierd'},
+        notNull: {msg: 'CPP is requierd'}
+      }
+    },
+    weddingDay: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: 'Wedding date is requierd'},
+        notNull: {msg: 'Wedding date is requierd'}
+      }
+    },
+    greeting: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: 'Username is requierd'},
+        notNull: {msg: 'Username is requierd'}
+      }
+    },
+    akadStart: {
+      type: DataTypes.TIME,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: 'Akad time is requierd'},
+        notNull: {msg: 'Akad time is requierd'}
+      }
+    },
+    akadEnd: {
+      type: DataTypes.TIME,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: 'Akad time is requierd'},
+        notNull: {msg: 'Akad time is requierd'}
+      }
+    },
+    resepsiStart: {
+      type: DataTypes.TIME,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: 'Resepsi time is requierd'},
+        notNull: {msg: 'Resepsi is requierd'}
+      }
+    },
+    resepsiEnd: {
+      type: DataTypes.TIME,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: 'Resepsi time is requierd'},
+        notNull: {msg: 'Resepsi time is requierd'}
+      }
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: 'Location is requierd'},
+        notNull: {msg: 'Location is requierd'}
+      }
+    },
+    quote: DataTypes.STRING,
     CustomerId: DataTypes.INTEGER
   }, {
     sequelize,
