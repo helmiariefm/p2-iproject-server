@@ -147,9 +147,9 @@ class Controller{
                 resepsiStart,
                 resepsiEnd,
                 location,
-                quote
+                loveQuote
             } = req.body
-            console.log(quote)
+            // console.log(quote)
             const createInvitation = await Invitation.create({
                 routeName,
                 cpw,
@@ -161,10 +161,29 @@ class Controller{
                 resepsiStart,
                 resepsiEnd,
                 location,
-                quote,
+                loveQuote,
                 CustomerId: req.customer.id
             })
             res.status(201).json(createInvitation)
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async invitationName(req, res, next){
+        console.log(req.params)
+        try {
+            const getData = await Invitation.findOne({                
+                where: {
+                    routeName: req.params.invitationName
+                }
+            })
+            // console.log(getData, '<<<<<!!!!!!')
+            if(getData){
+                res.status(200).json(getData)
+            }else{
+                throw {name: 'WrongId'}
+            }
         } catch (err) {
             next(err)
         }

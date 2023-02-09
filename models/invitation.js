@@ -96,7 +96,7 @@ module.exports = (sequelize, DataTypes) => {
         notNull: {msg: 'Location is requierd'}
       }
     },
-    quote: DataTypes.STRING,
+    loveQuote: DataTypes.STRING,
     CustomerId: DataTypes.INTEGER
   }, {
     sequelize,

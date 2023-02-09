@@ -18,6 +18,7 @@ app.post('/register', Controller.register)
 app.post('/login', Controller.login)
 app.post('/googlelogin', Controller.googlelogin)
 app.get('/generatequotes', Controller.generatequotes)
+app.get('/:invitationName', Controller.invitationName)
 
 app.use(authentication)
 
